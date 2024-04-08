@@ -1,0 +1,21 @@
+
+POST http://localhost:7007/api/security/auth/register
+
+{
+    "username": "PatrickAdmin",
+    "password": "1234"
+}
+###
+
+POST http://localhost:7007/api/security/auth/login
+
+{
+    "username": "PatrickUser",
+    "password": "1234"
+}
+###
+GET http://localhost:7007/api/protected/protected/user
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXRyaWNrIiwic3ViIjoiUGF0cmlja1VzZXIiLCJleHAiOjE3MTE5ODcyMzksInJvbGVzIjoidXNlciIsInVzZXJuYW1lIjoiUGF0cmlja1VzZXIifQ.4OCLDeHVAg9xwHwvrFFo_wtt3LpfaC5C1KaS7YMWVYk
+###
+GET http://localhost:7007/api/protected/protected/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQYXRyaWNrIiwic3ViIjoiUGF0cmlja1VzZXIiLCJleHAiOjE3MTE5ODcyMzksInJvbGVzIjoidXNlciIsInVzZXJuYW1lIjoiUGF0cmlja1VzZXIifQ.4OCLDeHVAg9xwHwvrFFo_wtt3LpfaC5C1KaS7YMWVYk
