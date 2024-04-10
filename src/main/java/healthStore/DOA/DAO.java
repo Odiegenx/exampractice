@@ -1,6 +1,6 @@
-package restSecrurity.DOA;
+package healthStore.DOA;
 
-import config.HibernateConfig;
+import healthStore.config.HibernateConfig;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.TypedQuery;
@@ -11,9 +11,10 @@ public abstract class DAO<T, D> implements iDAO<T,D> {
 
     Class<T> objectClass;
     static boolean isTest = false;
-    public static EntityManagerFactory emf = HibernateConfig.getEntityManagerFactoryConfig(isTest);
+    public static EntityManagerFactory emf;
 
-    public DAO(Class<T> tClass){
+    public DAO(Class<T> tClass,boolean isTest){
+        emf = HibernateConfig.getEntityManagerFactoryConfig(isTest);
         this.objectClass = tClass;
     }
     public T getById(D id) {
@@ -57,7 +58,7 @@ public abstract class DAO<T, D> implements iDAO<T,D> {
         }
     }
     public void isTest(boolean value){
-        this.isTest = value;
+        isTest = value;
     }
 
 }

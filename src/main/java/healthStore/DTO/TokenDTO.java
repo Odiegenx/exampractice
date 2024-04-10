@@ -1,4 +1,4 @@
-package restSecrurity.DTO;
+package healthStore.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

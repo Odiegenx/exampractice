@@ -1,10 +1,11 @@
-package restSecrurity.DTO;
+package healthStore.DTO;
 
+import healthStore.persistance.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import restSecrurity.persistance.User;
+
 
 import java.util.Set;
 

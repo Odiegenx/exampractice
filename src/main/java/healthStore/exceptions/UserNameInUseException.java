@@ -1,4 +1,4 @@
-package restSecrurity.exceptions;
+package healthStore.exceptions;
 
 public class UserNameInUseException  extends Exception{
     public UserNameInUseException(String msg){

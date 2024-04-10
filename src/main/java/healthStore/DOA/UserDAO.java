@@ -1,19 +1,20 @@
-package restSecrurity.DOA;
+package healthStore.DOA;
 
+import healthStore.persistance.Role;
+import healthStore.persistance.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
-import restSecrurity.persistance.Role;
-import restSecrurity.persistance.User;
+
 
 public class UserDAO extends DAO<User,String> implements iSecurityDAO{
 
     private static UserDAO instance;
-    public UserDAO() {
-        super(User.class);
+    public UserDAO(boolean isTesting) {
+        super(User.class,isTesting);
     }
-    public static UserDAO getInstance(){
+    public static UserDAO getInstance(Boolean isTesting){
         if(instance == null){
-            instance = new UserDAO();
+            instance = new UserDAO(isTesting);
         }
         return instance;
     }

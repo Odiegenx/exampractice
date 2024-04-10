@@ -1,13 +1,13 @@
-package config;
+package healthStore.config;
 
+import healthStore.persistance.Role;
+import healthStore.persistance.User;
 import jakarta.persistence.EntityManagerFactory;
 import lombok.NoArgsConstructor;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import restSecrurity.persistance.Role;
-import restSecrurity.persistance.User;
 
 import java.util.Properties;
 

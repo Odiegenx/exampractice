@@ -1,14 +1,15 @@
-package restSecrurity.tokenUtils;
+package healthStore.tokenUtils;
 
 import com.nimbusds.jose.*;
 import com.nimbusds.jose.crypto.MACSigner;
 import com.nimbusds.jose.crypto.MACVerifier;
 import com.nimbusds.jwt.JWTClaimsSet;
 import com.nimbusds.jwt.SignedJWT;
+import healthStore.DTO.UserDTO;
+import healthStore.exceptions.ApiException;
+import healthStore.exceptions.NotAuthorizedException;
 import io.javalin.http.HttpStatus;
-import restSecrurity.DTO.UserDTO;
-import restSecrurity.exceptions.ApiException;
-import restSecrurity.exceptions.NotAuthorizedException;
+
 
 import java.io.NotActiveException;
 import java.text.ParseException;

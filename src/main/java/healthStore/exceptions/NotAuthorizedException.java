@@ -1,4 +1,4 @@
-package restSecrurity.exceptions;
+package healthStore.exceptions;
 
 public class NotAuthorizedException extends Exception {
     private final int statusCode;

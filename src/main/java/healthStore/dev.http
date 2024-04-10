@@ -1,0 +1,18 @@
+GET http://localhost:7007/api/healthshop/api/healthproducts
+###
+GET http://localhost:7007/api/healthshop/api/healthproducts/1
+###
+POST http://localhost:7007/api/healthshop/api/healthproducts/
+
+{"category": "Vitamins", "name":
+"Vitamin D", "calories": 5,
+"price": 12.50, "description":
+"Supports bone health"}
+###
+PUT http://localhost:7007/api/healthshop/api/healthproducts/6
+
+{"category": "Vitamins", "name":
+"Vitamin D Plus", "calories": 10,
+"price": 15.50, "description":
+"Enhanced formula for bone health"}
+###

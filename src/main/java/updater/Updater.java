@@ -5,8 +5,8 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Updater<E,DTO> {
-    private static <E, DTO> E updateHotelFromDTO(E entity,DTO DTO){
+public class Updater {
+    public static <E, DTO> E updateFromDTO(E entity,DTO DTO){
         // Set of field names to skip during update should be sat as a private static attribute
         // on my update class and when I make a generic iteration of it.
         final Set<String> fieldsToSkip = new HashSet<>(Arrays.asList("id"));

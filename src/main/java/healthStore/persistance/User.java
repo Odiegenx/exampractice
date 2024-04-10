@@ -1,4 +1,4 @@
-package restSecrurity.persistance;
+package healthStore.persistance;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

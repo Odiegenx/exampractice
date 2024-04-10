@@ -1,9 +1,9 @@
-package config;
+package healthStore.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import restSecrurity.exceptions.ApiException;
-import restSecrurity.DTO.UserDTO;
+import healthStore.DTO.UserDTO;
+import healthStore.exceptions.ApiException;
 import io.javalin.Javalin;
 import io.javalin.apibuilder.EndpointGroup;
 import io.javalin.http.HttpStatus;

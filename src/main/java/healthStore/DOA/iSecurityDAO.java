@@ -1,6 +1,7 @@
-package restSecrurity.DOA;
+package healthStore.DOA;
 
-import restSecrurity.persistance.User;
+
+import healthStore.persistance.User;
 
 public interface iSecurityDAO {
     public User verifyUser(String username, String password);

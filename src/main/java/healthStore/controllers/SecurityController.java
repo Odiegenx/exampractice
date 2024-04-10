@@ -1,28 +1,34 @@
-package restSecrurity.controllers;
+package healthStore.controllers;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import healthStore.DOA.UserDAO;
+import healthStore.DTO.TokenDTO;
+import healthStore.DTO.UserDTO;
+import healthStore.exceptions.ApiException;
+import healthStore.persistance.User;
+import healthStore.tokenUtils.TokenUtils;
 import io.javalin.http.Context;
 import io.javalin.http.Handler;
 import io.javalin.http.HttpStatus;
 import io.javalin.validation.ValidationException;
 import jakarta.persistence.EntityExistsException;
 import jakarta.persistence.EntityNotFoundException;
-import restSecrurity.DTO.TokenDTO;
-import restSecrurity.DTO.UserDTO;
-import restSecrurity.exceptions.ApiException;
-import restSecrurity.persistance.User;
-import restSecrurity.DOA.UserDAO;
-import restSecrurity.tokenUtils.TokenUtils;
+
 
 public class SecurityController {
 
     private static UserDAO userDAO;
+    private static SecurityController instance;
 
-    public SecurityController(boolean isTest){
-        this.userDAO = UserDAO.getInstance();
-        userDAO.isTest(isTest);
+    public static SecurityController getInstance(Boolean isTesting) {
+        if (instance == null) {
+            instance = new SecurityController();
+            userDAO = UserDAO.getInstance(isTesting);
+        }
+        return instance;
     }
+
     static ObjectMapper objectMapper = new ObjectMapper();
     public Handler authenticate() {
         // To check the users roles against the allowed roles for the endpoint (managed by javalins accessManager)
