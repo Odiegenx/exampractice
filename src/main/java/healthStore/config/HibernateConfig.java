@@ -61,6 +61,27 @@ public class HibernateConfig {
         }
     }
 
+    private static EntityManagerFactory buildEntityFactoryConfigDeployed() {
+        try {
+            Configuration configuration = new Configuration();
+
+            Properties props = new Properties();
+
+            props.put("hibernate.connection.url", System.getenv("CONNECTION_STR") + System.getenv("DB_NAME"));
+            props.put("hibernate.connection.username", System.getenv("DB_USERNAME"));
+            props.put("hibernate.connection.password", System.getenv("DB_PASSWORD"));
+            props.put("hibernate.dialect", "org.hibernate.dialect.PostgreSQLDialect"); // dialect for postgresql
+            props.put("hibernate.connection.driver_class", "org.postgresql.Driver"); // driver class for postgresql
+            props.put("hibernate.archive.autodetection", "class"); // hibernate scans for annotated classes
+            props.put("hibernate.current_session_context_class", "thread"); // hibernate current session context
+            props.put("hibernate.hbm2ddl.auto", "update"/*"create-drop"*/); // hibernate creates tables based on entities
+            return getEntityManagerFactory(configuration, props);
+        } catch (Throwable ex) {
+            System.err.println("Initial SessionFactory creation failed." + ex);
+            throw new ExceptionInInitializerError(ex);
+        }
+    }
+
     private static EntityManagerFactory getEntityManagerFactory(Configuration configuration, Properties props) {
         configuration.setProperties(props);
 
@@ -91,8 +112,15 @@ public class HibernateConfig {
         if (entityManagerFactory == null) entityManagerFactory = setupHibernateConfigurationForTesting();
         return entityManagerFactory;
     }
-    public static EntityManagerFactory getEntityManagerFactoryConfig(boolean isTest){
-        if(isTest) return getEntityManagerFactoryConfigTEST();
+    public static EntityManagerFactory getEntityManagerFactory(boolean isTest) {
+        if (isTest) return getEntityManagerFactoryConfigTEST();
+        boolean isDeployed = (System.getenv("DEPLOYED") != null);
+        if (isDeployed) return getEntityManagerFactoryConfigIsDeployed();
         return getEntityManagerFactoryConfigNormal();
+    }
+
+    private static EntityManagerFactory getEntityManagerFactoryConfigIsDeployed() {
+        if (entityManagerFactory == null) entityManagerFactory = getEntityManagerFactoryConfigIsDeployed();
+        return entityManagerFactory;
     }
 }
