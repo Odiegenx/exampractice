@@ -1,5 +1,7 @@
 package healthStore.exceptions;
 
+import io.javalin.http.HttpStatus;
+
 public interface IExceptions {
-    public int getStatusCode();
+    public HttpStatus getStatusCode();
 }

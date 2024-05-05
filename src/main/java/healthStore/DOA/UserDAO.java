@@ -1,17 +1,23 @@
 package healthStore.DOA;
 
+import healthStore.DTO.HealthProductDTO;
+import healthStore.exceptions.ApiException;
 import healthStore.persistance.Role;
 import healthStore.persistance.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityNotFoundException;
 
+import java.util.List;
+
 
 public class UserDAO extends DAO<User,String> implements iSecurityDAO{
 
     private static UserDAO instance;
+
     public UserDAO(boolean isTesting) {
         super(User.class,isTesting);
     }
+
     public static UserDAO getInstance(Boolean isTesting){
         if(instance == null){
             instance = new UserDAO(isTesting);
@@ -42,5 +48,10 @@ public class UserDAO extends DAO<User,String> implements iSecurityDAO{
             em.getTransaction().commit();
             return user;
         }
+    }
+
+    @Override
+    public List<HealthProductDTO> getByCategory(String category) throws ApiException {
+        return List.of();
     }
 }

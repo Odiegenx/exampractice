@@ -1,5 +1,7 @@
 package healthStore.config;
 
+import healthStore.model.HealthProduct;
+import healthStore.model.Storage;
 import healthStore.persistance.Role;
 import healthStore.persistance.User;
 import jakarta.persistence.EntityManagerFactory;
@@ -76,6 +78,9 @@ public class HibernateConfig {
         // configuration.addAnnotatedClass(<YOUR ENTITY>.class);
         configuration.addAnnotatedClass(Role.class);
         configuration.addAnnotatedClass(User.class);
+        configuration.addAnnotatedClass(HealthProduct.class);
+        configuration.addAnnotatedClass(Storage.class);
+
     }
 
     private static EntityManagerFactory getEntityManagerFactoryConfigNormal() {

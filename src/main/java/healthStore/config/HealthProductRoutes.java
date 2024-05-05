@@ -12,7 +12,7 @@ public class HealthProductRoutes {
    private static HealthProductController healthProductController;
    private static SecurityController securityController;
     public static EndpointGroup setRoutes(){
-        healthProductController = HealthProductController.getInstance();
+        healthProductController = HealthProductController.getInstance(true,false);
         securityController = SecurityController.getInstance(false);
         return () -> {
             before(SecurityController::authenticate);

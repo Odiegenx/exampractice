@@ -1,0 +1,2 @@
+healthStore.exceptions.ApiException: No productFound with that id | 2024-04-11T09:04:59.275769600
+healthStore.exceptions.ApiException: No productFound with that idStatus code: 404 | 2024-04-11T10:02:34.299693200

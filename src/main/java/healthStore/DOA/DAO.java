@@ -10,7 +10,6 @@ import java.util.List;
 public abstract class DAO<T, D> implements iDAO<T,D> {
 
     Class<T> objectClass;
-    static boolean isTest = false;
     public static EntityManagerFactory emf;
 
     public DAO(Class<T> tClass,boolean isTest){
@@ -42,12 +41,13 @@ public abstract class DAO<T, D> implements iDAO<T,D> {
             return null;
         }
     }
-    public void delete(D id) {
+    public T delete(D id) {
         try(EntityManager em = emf.createEntityManager()) {
             em.getTransaction().begin();
             T toRemove = em.find(objectClass,id);
             em.remove(toRemove);
             em.getTransaction().commit();
+            return toRemove;
         }
     }
     public List<T> getAll() {
@@ -56,9 +56,6 @@ public abstract class DAO<T, D> implements iDAO<T,D> {
             List<T> queryList = query.getResultList();
             return queryList;
         }
-    }
-    public void isTest(boolean value){
-        isTest = value;
     }
 
 }

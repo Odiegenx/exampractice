@@ -58,7 +58,7 @@ public class TokenUtils {
             return jwsObject.serialize();
         }catch (JOSEException e){
             e.printStackTrace();
-            throw new ApiException(500,"Could not create token");
+            throw new ApiException(HttpStatus.forStatus(500),"Could not create token");
         }
     }
 
@@ -78,7 +78,7 @@ public class TokenUtils {
             }
         }catch (ParseException | JOSEException | NotAuthorizedException e){
             e.printStackTrace();
-            throw new ApiException(HttpStatus.UNAUTHORIZED.getCode(), "Unauthorized! could not validate token");
+            throw new ApiException(HttpStatus.UNAUTHORIZED, "Unauthorized! could not validate token");
         }
     }
     private static boolean tokenIsValid(String token,String secret) throws ParseException, JOSEException, NotAuthorizedException {

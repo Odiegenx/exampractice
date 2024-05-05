@@ -114,7 +114,7 @@ public class ApplicationConfig {
                     handler.handle(ctx);
                 }else {
                     try {
-                        throw new ApiException(HttpStatus.FORBIDDEN.getCode(), "Only authorized for roles: " + allowedRoles);
+                        throw new ApiException(HttpStatus.FORBIDDEN, "Only authorized for roles: " + allowedRoles);
                     } catch (ApiException e) {
                         throw new RuntimeException(e);
                     }

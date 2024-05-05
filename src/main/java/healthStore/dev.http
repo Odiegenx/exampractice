@@ -1,6 +1,6 @@
 GET http://localhost:7007/api/healthshop/api/healthproducts
 ###
-GET http://localhost:7007/api/healthshop/api/healthproducts/1
+GET http://localhost:7007/api/healthshop/api/healthproducts/7
 ###
 POST http://localhost:7007/api/healthshop/api/healthproducts/
 
