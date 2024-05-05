@@ -112,7 +112,7 @@ public class HibernateConfig {
         if (entityManagerFactory == null) entityManagerFactory = setupHibernateConfigurationForTesting();
         return entityManagerFactory;
     }
-    public static EntityManagerFactory getEntityManagerFactory(boolean isTest) {
+    public static EntityManagerFactory getEntityManagerFactoryConfig(boolean isTest) {
         if (isTest) return getEntityManagerFactoryConfigTEST();
         boolean isDeployed = (System.getenv("DEPLOYED") != null);
         if (isDeployed) return getEntityManagerFactoryConfigIsDeployed();
